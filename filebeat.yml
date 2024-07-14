@@ -1,0 +1,20 @@
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+filebeat.inputs:
+- type: log
+  paths:
+    - /logs/*.log
+  multiline:
+    type: pattern
+    pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+    negate: true
+    match: after
+
+# output.console:
+#   pretty: true
+
+output.logstash:
+  hosts: ["172.17.0.1:5044"]

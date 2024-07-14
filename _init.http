@@ -1,0 +1,22 @@
+### Set password for kibana_system
+POST http://localhost:9200/_security/user/kibana_system/_password
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{"password" : "{{$dotenv %KIBANA_SYSTEM_PASSWORD}}"}
+
+
+### Create role
+POST http://localhost:9200/_security/role/logstash_writer
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+< ./roles/logstash_writer.json
+
+### Set password for logstash_internal
+### Add role for logstash_internal
+POST http://localhost:9200/_security/user/logstash_internal
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{"password" : "{{$dotenv %LOGSTASH_INTERNAL_PASSWORD}}", "roles":["logstash_writer"]}

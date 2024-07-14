@@ -1,0 +1,13 @@
+### get elastic info
+GET http://localhost:9200
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+
+
+### get elastic users
+GET http://localhost:9200/_security/user
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+
+
+### get elastic users
+GET http://localhost:9200/_security/role
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
