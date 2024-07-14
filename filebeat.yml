@@ -6,12 +6,13 @@ filebeat.config:
 filebeat.inputs:
 - type: log
   paths:
-    - /logs/*.log
+    - /logs/**/*.log
   multiline:
     type: pattern
     pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
     negate: true
     match: after
+    timeout: 1s
 
 # output.console:
 #   pretty: true

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <timestamp key="LOG_TIMESTAMP" datePattern="yyyy-MM-dd'T'HH:mm:ss.SSS"/>
+	<property name="LOG_FILE" value="/logs/${HOSTNAME}/spring_${LOG_TIMESTAMP}.log" />
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+	<include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
