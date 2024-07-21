@@ -11,3 +11,30 @@ Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
 ### get elastic users
 GET http://localhost:9200/_security/role
 Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+
+### 
+curl -X GET "http://localhost:9200/logstash-test/_search" -u elastic:khDFR22tKhcKVa -H 'Content-Type: application/json' -d'
+{
+    "from": 0,
+    "size": 1000,
+    "query": {
+        "match": {
+            "log.file.path": "/logs/d9a7c422ca0a_spring_2024-07-14T04:37:54.544.log"
+        }
+    },
+    "fields": [
+        "message"
+    ],
+    "_source": false,
+    "sort": [
+        {
+            "_timestamp": {
+                "order": "asc"
+            },
+            "log.offset": {
+                "order": "asc"
+            }
+        }
+    ]
+}
+' | jq -r .hits.hits[].fields.message[0]
