@@ -1,11 +1,12 @@
-curl -X GET "http://localhost:9200/logstash-test/_search" -u elastic:khDFR22tKhcKVa -H 'Content-Type: application/json' -d'
+LOG_FILE='/logs/test.log'
+QUERY_DATA='
 {
     "from": 0,
     "size": 100,
     "query": {
         "match": {
             "log.file.path": {
-                "query": "/logs/de97013df5fb/spring_2024-07-22T02:20:26.989.log",
+                "query": "'"$LOG_FILE"'",
                 "operator": "and"
             }
         }
@@ -25,4 +26,6 @@ curl -X GET "http://localhost:9200/logstash-test/_search" -u elastic:khDFR22tKhc
         }
     ]
 }
-' | jq -r .hits.hits[].fields.message[0]
+'
+
+curl -s -X GET "http://localhost:9200/logstash-test/_search" -u elastic:khDFR22tKhcKVa -H 'Content-Type: application/json' -d "$QUERY_DATA" | jq -r .hits.hits[].fields.message[0]
