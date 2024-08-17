@@ -1,0 +1,3 @@
+### get elastic info
+GET http://localhost:9200/_cat/indices?v=true
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}

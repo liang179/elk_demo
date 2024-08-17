@@ -1,0 +1,7 @@
+### get elastic info
+GET http://localhost:9200/
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+
+### get nodes
+GET http://localhost:9200/_nodes
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}

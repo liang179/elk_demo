@@ -1,0 +1,69 @@
+###
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "standard",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "simple",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "stop",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "whitespace",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "keyword",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer": "pattern",
+  "text": "2 Running quick brown-foxes leap over lazy dog in the summer evening"
+}
+
+### 
+GET http://localhost:9200/_analyze
+Authorization: Basic elastic {{$dotenv %ELASTIC_PASSWORD}}
+content-type: application/json
+
+{
+  "analyzer" : "snowball",
+  "text" : "I sing he sings they are singing"
+}
